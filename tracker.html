@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- WELCOME SPLASH SCREEN -->
+    <div class="welcome-splash" id="welcomeSplash">
+        <div class="welcome-content">
+            <h1>Welcome 🍃</h1>
+            <p>Finance & Budget Manager</p>
+            <div class="welcome-hint">Click anywhere to continue</div>
+        </div>
+        <img src="zundamon-spin.gif" class="welcome-gif" alt="loading" />
+    </div>
+
+    <div class="tracker-container">
+        <h1>💰 Finance & Budget Manager</h1>
+
+        <!-- MONTH PICKER -->
+        <div class="month-section">
+            <div class="month-controls">
+                <label for="monthPicker">Select Month:</label>
+                <input type="month" id="monthPicker" />
+            </div>
+        </div>
+
+        <!-- INPUT FORM -->
+        <div class="form-section">
+            <h2>Income & Expenses</h2>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="income">Monthly Income</label>
+                    <input type="number" id="income" placeholder="0" step="0.01" />
+                </div>
+                <div class="input-group">
+                    <label for="savingsGoal">Savings Goal (optional)</label>
+                    <input type="number" id="savingsGoal" placeholder="0" step="0.01" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="bills">Bills (rent/utilities/insurance/subs)</label>
+                    <input type="number" id="bills" placeholder="0" step="0.01" />
+                </div>
+                <div class="input-group">
+                    <label for="food">Food (groceries/dining)</label>
+                    <input type="number" id="food" placeholder="0" step="0.01" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="entertainment">Entertainment</label>
+                    <input type="number" id="entertainment" placeholder="0" step="0.01" />
+                </div>
+                <div class="input-group">
+                    <label for="retail">Retail</label>
+                    <input type="number" id="retail" placeholder="0" step="0.01" />
+                </div>
+            </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="button-group">
+            <button id="calculate">Calculate</button>
+            <button id="clearBtn" class="secondary">Clear</button>
+            <button id="exportCSV">Export CSV</button>
+            <button id="exportPDF">Export Report</button>
+            <button id="clearAllBtn" class="secondary">Clear All Data</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="results" class="results-box" style="display:none;">
+            <h2>📊 Results</h2>
+
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-label">Total Spending</div>
+                    <div class="result-value" id="totalSpending">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Monthly Savings</div>
+                    <div class="result-value" id="monthlySavings">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Daily Savings</div>
+                    <div class="result-value" id="dailySavings">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Weekly Savings</div>
+                    <div class="result-value" id="weeklySavings">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Yearly Savings</div>
+                    <div class="result-value" id="yearlySavings">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Savings Rate</div>
+                    <div class="result-value" id="savingsRate">0%</div>
+                </div>
+            </div>
+
+            <!-- SAVINGS GAUGE -->
+            <h3>Savings Rate Gauge</h3>
+            <div class="gauge-container">
+                <div class="gauge">
+                    <div class="gauge-inner">
+                        <div class="gauge-value" id="gaugeValue">0%</div>
+                        <div class="gauge-label">Savings Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECOMMENDATION -->
+            <div id="recommendation"></div>
+
+            <!-- CHARTS -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Spending Breakdown</h3>
+                    <canvas id="spendingChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Savings Over Time</h3>
+                    <canvas id="savingsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="storage.js"></script>
+    <script src="charts.js"></script>
+    <script src="calc.js"></script>
+</body>
+</html>
